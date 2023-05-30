@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
-use App\Pelamar;
+
+use App\Mahasiswa;
 
 class PageController extends Controller
 {
@@ -12,105 +12,72 @@ class PageController extends Controller
     {
         return view('home', ['key' => 'home']);
     }
-    public function account()
+    public function profile()
     {
-        return view('account', ['key' => 'account']);
+        return view('profile', ['key' => 'profile']);
     }
-    // Start Pelamar
-    public function pelamar()
+    public function mahasiswa()
     {
-        $pelamar = Pelamar::paginate(5);
-        return view('pelamar', ['key' => 'pelamar', 'pelamar' => $pelamar]);
+        $mhs = Mahasiswa::paginate(10);
+        return view('mahasiswa', ['key' => 'mahasiswa'], ['mhs' => $mhs]);
     }
-    public function detailpelamar($id)
+    public function contact()
     {
-        $pelamar = Pelamar::find($id);
-        return view('detailpelamar', ['key' => 'pelamar'], ['pelamar' => $pelamar]);
-
+        return view('contact', ['key' => 'contact']);
     }
-    public function formtambahpelamar(){
-        return view('formtambahpelamar',['key' => 'pelamar']);
+    public function find(Request $request)
+    {
+        $cari = $request->key;
+        $mhs = Mahasiswa::where('nama', 'like', '%' . $cari . '%')->paginate(10);
+        $mhs->appends($request -> all());
+        return view('mahasiswa', ['key' => 'mahasiswa', 'mhs' => $mhs]);
     }
-    public function simpanpelamar(Request $request){
-        $nik = $request->nik;
+    public function tambah()
+    {
+        return view('formtambah',['key'=>'mahasiswa']);
+        // return redirect("/mahasiswa");
+    }
+    public function simpan(Request $request){
+        $nim = $request->nim;
         $nama = $request->nama;
         $gender = $request->gender;
-        $tingkat_pendidikan = $request->tingkat_pendidikan;
-        $bidang_keahlian = implode(",",$request->get('bidang_keahlian'));
-        Pelamar::create([
-            'nik' => $nik,
-            'nama' => $nama,
-            'gender' => $gender,
-            'tingkat_pendidikan' => $tingkat_pendidikan,
-            'bidang_keahlian' => $bidang_keahlian
-        ]);
-        return redirect('pelamar')->with('flash_insert','Data dengan Nama ' . $nama . ' Berhasil Di simpan');
-    }
-    public function formeditpelamar($id){
-        $pelamar = Pelamar::find($id);
-        return view('formeditpelamar',['key'=>'pelamar', 'pelamar'=>$pelamar]);
-    }
-    public function simpaneditpelamar($id, Request $request){
-        $pelamar = Pelamar::find($id); 
-        $pelamar->nik = $request->nik;
-        $pelamar->nama = $request->nama;
-        $pelamar->gender = $request->gender;
-        $pelamar->tingkat_pendidikan = $request->tingkat_pendidikan;
-        $pelamar->bidang_keahlian = implode(',',$request->get('bidang_keahlian'));
-        $pelamar->save();
+        $prodi = $request->prodi;
+        $minat = implode(',',$request->get('minat'));
         
-        return redirect('/pelamar')->with('flash_edit', 'Data dengan Nama ' .$pelamar->nama. ' Berhasil Di Edit');
-    }
-    public function deletepelamar($id){
-        $pelamar = Pelamar::find($id);
-        $pelamar->delete();
-        return redirect('/pelamar')->with('flash_delete', 'Data Dengan Nama ' .$pelamar->nama. ' Berhasil Dihapus');
-    }
-    // End Pelamar
-
-    // START Product
-    public function product()
-    {
-        $product = Product::get();
-        return view('product', ['key' => 'product'], ['product' => $product]);
-    }
-    public function detailproduct($id)
-    {
-        $product = Product::get();
-        return view('detailproduct', ['key' => 'product'], ['product' => $product]);
-    }
-    public function formtambah()
-    {
-        return view('formtambah', ['key' => 'product']);
-    }
-    public function simpanData(Request $request)
-    {
-        // return $request->file('photo')->store('post-photos');
-        $kodeProduk = $request->kodeProduk;
-        $namaProduk = $request->namaProduk;
-        $deskripsi = $request->deskripsi;
-        $harga = $request->harga;
-        $jumlahProduk = $request->jumlahProduk;
-
-        if ($request->hasFile('photo')) {
-            $nm = $request->photo;
-            $fileName = $nm->getClientOriginalName();
-            $nm->move(public_path('images'), $fileName);
-            Product::create([
-                'kodeProduk' => $kodeProduk,
-                'namaProduk' => $namaProduk,
-                'photo' => $fileName,
-                'deskripsi' => $deskripsi,
-                'harga' => $harga,
-                'jumlahProduk' => $jumlahProduk
-            ]);
-            return redirect('product');
-        }
-    }
-    // Reporting
-    public function reporting()
-    {
-        return view('reporting', ['key' => 'reporting']);
+        Mahasiswa::create([
+            'nim'=>$nim,
+            'nama'=>$nama,
+            'gender'=>$gender,
+            'prodi'=>$prodi,
+            'minat'=>$minat
+        ]);
+        return redirect('mahasiswa')->with('alert', 'Nim ' .$nim . ' Berhasil Ditambahkan');
     }
 
+    public function edit($id){
+        $mhs = Mahasiswa::find($id);
+        return view('formedit',['key'=>'mahasiswa', 'mhs'=>$mhs]);
+    }
+    public function updatemhs($id, Request $request){
+        $mhs = Mahasiswa::find($id); 
+        $mhs->nim = $request->nim;
+        $mhs->nama = $request->nama;
+        $mhs->gender = $request->gender;
+        $mhs->prodi = $request->prodi;
+        $mhs->minat = implode(',',$request->get('minat'));
+        $mhs->save();
+        
+        return redirect('/mahasiswa')->with('alert', 'Nim ' .$mhs->nim. ' Berhasil DiUpdate');
+    }
+        // $id = $request->id;
+        // Mahasiswa::where('id', $id)->delete();
+    public function deletemhs($id, Request $request){
+        $mhs = Mahasiswa::find($id);
+        $mhs->delete();
+        return redirect('mahasiswa')->with('alert', 'Nim ' .$mhs->nim. ' Berhasil Dihapus');
+    }
+    public function desc(){
+        $mhs = Mahasiswa::orderby('id','desc')->paginate(10);
+        return view('mahasiswa', ['key' => 'mahasiswa'], ['mhs' => $mhs]);
+    }
 }

@@ -1,8 +1,8 @@
 @extends('layouts/main')
-@section('title', 'home')
+@section('title', 'profile')
 @section('content')
     <div class="jumbotron">
-        <h1 class="display-4">HALLO RAKYAT</h1>
+        <h1 class="display-4">Halaman Profile</h1>
         <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
             featured content or information.</p>
         <hr class="my-4">

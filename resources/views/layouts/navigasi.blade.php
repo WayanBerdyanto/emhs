@@ -1,7 +1,18 @@
-<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-    <a class="nav-link {{ $key =='home' ? 'active':'' }}" href="/">Home</a>
-    <a class="nav-link {{ $key =='account' ? 'active':'' }}" href="/account">Account</a>
-    <a class="nav-link {{ $key =='pelamar' ? 'active':'' }}" href="/pelamar">Pelamar</a>
-    <a class="nav-link {{ $key =='product' ? 'active':'' }}" href="/product">Product</a>
-    <a class="nav-link {{ $key =='reporting' ? 'active':'' }}" href="/reporting">Reporting</a>
+<div class="nav flex-column nav-pills mt-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <a class="nav-link text-light font-weight-bold {{ $key == 'home' ? 'active bg-dark' : 'text-dark' }}"
+        href="/">
+        <i class="bi bi-house-door-fill"></i> Home</a>
+    <a class="nav-link text-light font-weight-bold {{ $key == 'profile' ? 'active bg-dark' : 'text-dark' }}"
+        href="/profile">
+        <i class="bi bi-person-circle"></i> Profile</a>
+    <a class="nav-link text-light font-weight-bold {{ $key == 'mahasiswa' ? 'active bg-dark' : 'text-dark' }}"
+        href="/mahasiswa">
+        <i class="bi bi-person-check-fill"></i> Mahasiswa</a>
+    <a class="nav-link text-light font-weight-bold {{ $key == 'contact' ? 'active bg-dark' : 'text-dark' }}"
+        href="/contact">
+        <i class="bi bi-person-lines-fill"></i> Contact</a>
+
+    <a class="nav-link text-light font-weight-bold {{ $key == 'artikel' ? 'active bg-dark' : 'text-dark' }}"
+        href="/artikel">
+        <i class="bi bi-file-earmark-ppt-fill"></i> Artikel</a>
 </div>

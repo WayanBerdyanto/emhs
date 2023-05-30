@@ -11,26 +11,29 @@
 |
 */
 
-Route::get('/','PageController@home');
-Route::get('/account','PageController@account');
-Route::get('/pelamar','PageController@pelamar');
-Route::get('/product/detailproduct/{id}','PageController@detailproduct');
-// Tambah FormPelamar
-Route::get('/pelamar/formtambahpelamar', 'PageController@formtambahpelamar');
-// Simpan Pelamar
-Route::post('/pelamar/simpanpelamar', 'PageController@simpanpelamar');
-// Detail Pelamar
-Route::get('/pelamar/detailpelamar/{id}','PageController@detailpelamar');
-// Edit Pelamar
-Route::get('/pelamar/formeditpelamar/{id}','PageController@formeditpelamar');
-Route::put('/pelamar/simpaneditpelamar/{id}','PageController@simpaneditpelamar');
-// Delete Pelamar
-Route::get('/pelamar/deletepelamar/{id}','PageController@deletepelamar');
+// Route::get('/', function () {
+//     return view('home');
+// });
+Route::get('/', 'PageController@home');
+Route::get('/profile', 'PageController@profile');
 
-Route::get('/product','PageController@product');
-Route::get('/reporting','PageController@reporting');
-// Form Tambah
-Route::get('/product/formtambah','PageController@formtambah');
-// Simpan Data
-Route::post('/product/simpanData','PageController@simpanData');
-// Detail Products
+Route::get('/mahasiswa', 'PageController@mahasiswa');
+Route::get('/mahasiswa/find', 'PageController@find');
+Route::get('/mahasiswa/formtambah', 'PageController@tambah');
+Route::post('/mahasiswa/simpan', 'PageController@simpan');
+Route::get('/mahasiswa/desc', 'PageController@desc');
+Route::get('/mahasiswa/formedit/{id}', 'PageController@edit');
+
+// Route::post('/mahasiswa/updatemhs/{id}', 'PageController@updatemhs');
+Route::put('/mahasiswa/updatemhs/{id}', 'PageController@updatemhs');
+
+// Route::get('/mahasiswa/deletemhs/{id}', 'PageController@deletemhs');
+
+Route::get('/mahasiswa/deletemhs/{id}', 'PageController@deletemhs');
+
+Route::get('/contact', 'PageController@contact');
+
+Route::get('/artikel', function(){
+    return view('artikel', ['key' => 'artikel']);
+}
+);
