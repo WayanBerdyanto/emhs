@@ -1,6 +1,16 @@
 @extends('layouts/main')
 @section('title', 'mahasiswa')
 @section('content')
+    @if (session('flash_login'))
+        <div class="alert alert-success fade show" role="alert">
+            <strong>
+                {{ session('flash_login') }}
+            </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <div class="card mt-4">
         <div class="card-header">
             <a class="btn btn-outline-primary my-2 my-lg-0"href="/mahasiswa/formtambah">
@@ -13,7 +23,7 @@
                     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </span>
-        </div> 
+        </div>
         <div class="card-body">
             @if (session('alert'))
                 <div class="alert alert-success fade show" role="alert">

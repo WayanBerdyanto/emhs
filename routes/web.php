@@ -37,3 +37,10 @@ Route::get('/artikel', function(){
     return view('artikel', ['key' => 'artikel']);
 }
 );
+// USER
+Route::get('/register','AuthController@register');
+
+Route::post('/simpan','AuthController@simpan');
+Route::get('/login','AuthController@login');
+
+Route::post('/ceklogin','AuthController@ceklogin');

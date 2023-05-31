@@ -31,9 +31,9 @@
                                 <img class="align-self-center mr-2" src="{{ asset('profile.png') }}" width="80px" height="80px"
                                     alt="Generic placeholder image" />
                                 <div class="media-body">
-                                    <h5 class="mt-2">Wayan Berdyanto</h5>
+                                    <h5 class="mt-2">{{ Auth::user()->name ??'' }}</h5>
                                     <a class="dropdown-item" href="#">
-                                        <i class="bi bi-emoji-smile-fill"></i> Selamat Pagi</a>
+                                        <i class="bi bi-emoji-smile-fill"></i> Selamat Pagi {{ Auth::user()->name ??'' }}</a>
                                 </div>
                             </div>
                         </a>
