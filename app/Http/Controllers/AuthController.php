@@ -17,19 +17,23 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
-        return redirect('/login');
+        return redirect('/');
     }
     public function login(){
         return view('/login');
     }
     public function ceklogin(Request $request){
         if(!Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-            return redirect('/login')->with('flash_error', 'Username atau Passoword Anda salah');
+            return redirect('/')->with('flash_error', 'Username atau Passoword Anda salah');
         }else{
-            return redirect('/mahasiswa')->with('flash_login','Anda Berhasil Login');
+            return redirect('/home')->with('flash_login','Anda Berhasil Login');
         }
     }
     public function home(){
         return view('home', ['key' => 'home'])->with('flash_login','Anda Berhasil Login');
+    }
+    public function logout(){
+        Auth::logout();
+        return view('/login');
     }
 }

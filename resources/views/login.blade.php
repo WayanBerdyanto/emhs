@@ -13,22 +13,13 @@
 </head>
 
 <body>
-    @if (session('flash_error'))
-        <div class="alert alert-danger fade show" role="alert">
-            <strong>
-                {{ session('flash_error') }}
-            </strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-    <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
-        <div class="card w-50">
-            <div class="card-header">
+    <div class="container-fluid d-flex justify-content-center align-items-center vh-100"
+        style="background-color: #C1D0B5">
+        <div class="card w-25" style="background-color: #D6E8DB; box-shadow: 1px 3px rgba(0,0,0,0.5)">
+            <div class="card-header" style="background-color: #27374D">
                 <div class="text-center">
                     <span class="text-primary h4">Form</span>
-                    <span class="text-dark h5">Register</span>
+                    <span class="text-danger h5">Login</span>
                 </div>
             </div>
             <div class="card-body">
@@ -41,12 +32,43 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="password" class="form-control"
-                            placeholder="Masukan Password" required>
+                        @if (session('flash_error'))
+                            <input type="password" name="password" id="password"
+                                class="form-control border border-danger" placeholder="Masukan Password" required>
+                            <div class="alert alert-danger fade show" role="alert">
+                                <strong>
+                                    {{ session('flash_error') }}
+                                </strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @else
+                            <input type="password" name="password" id="password" class="form-control"
+                                placeholder="Masukan Password" required>
+                        @endif
                     </div>
-                    <div class="form-group d-flex justify-content-end">
-                        <a href="">Lupa Password ?</a>
+                    <div class="form-group d-flex justify-content-between">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck" onclick="myfunction()">
+                            <label class="form-check-label" for="gridCheck">
+                                Lihat Password
+                            </label>
+                        </div>
+                        <div class="form-group d-flex justify-content-end">
+                            <a href="">Lupa Password ?</a>
+                        </div>
                     </div>
+                    <script>
+                        function myfunction() {
+                            var pass = document.getElementById('password').type;
+                            if (pass == 'password') {
+                                document.getElementById('password').type = 'text';
+                            } else {
+                                document.getElementById('password').type = 'password';
+                            }
+                        }
+                    </script>
                     <div class="form-group d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary w-25">Sign-In</button>
                     </div>
@@ -54,7 +76,7 @@
                         <span>Don't Have Account?</span>
                     </div>
                     <div class="form-group d-flex justify-content-center mt-3">
-                        <a href="/register" class="btn btn-primary w-25 text-light">Sign-In</a>
+                        <a href="/register" class="btn btn-primary w-25 text-light">Register</a>
                     </div>
                 </form>
             </div>

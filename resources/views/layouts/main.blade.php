@@ -28,18 +28,19 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">
                             <div class="media">
-                                <img class="align-self-center mr-2" src="{{ asset('profile.png') }}" width="80px" height="80px"
-                                    alt="Generic placeholder image" />
+                                <img class="align-self-center mr-2" src="{{ asset('profile.png') }}" width="80px"
+                                    height="80px" alt="Generic placeholder image" />
                                 <div class="media-body">
-                                    <h5 class="mt-2">{{ Auth::user()->name ??'' }}</h5>
+                                    <h5 class="mt-2">{{ Auth::user()->name ?? '' }}</h5>
                                     <a class="dropdown-item" href="#">
-                                        <i class="bi bi-emoji-smile-fill"></i> Selamat Pagi {{ Auth::user()->name ??'' }}</a>
+                                        <i class="bi bi-emoji-smile-fill"></i> Selamat Pagi
+                                        {{ Auth::user()->name ?? '' }}</a>
                                 </div>
                             </div>
                         </a>
-                        <a class="dropdown-item border-top" href="#">
+                        <a class="dropdown-item border-top" href="#modalset" data-toggle="modal">
                             <i class="bi bi-gear-fill"></i> Setting</a>
-                        <a class="dropdown-item border-top" href="#">
+                        <a class="dropdown-item border-top" href="/logout" data-toggle="modal" data-target="#modalset">
                             <i class="bi bi-power"></i> Logout</a>
                     </div>
                 </div>
@@ -61,6 +62,25 @@
 
         {{-- END ROW CARD --}}
     </div>
+    <div class="modal" tabindex="-1" role="dialog" id="modalset">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Anda Yakin Ingin Logout dari user {{ Auth::user()->name ?? '' }}</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="/logout" class="btn btn-primary">Ok</a>
+                    <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Cancle</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Optional JavaScript -->
