@@ -31,14 +31,21 @@
                                 <img class="align-self-center mr-2" src="{{ asset('profile.png') }}" width="80px"
                                     height="80px" alt="Generic placeholder image" />
                                 <div class="media-body">
+<<<<<<< HEAD
                                     <h5 class="mt-2">{{ Auth::user()->nama_user ?? '' }}</h5>
                                     <a class="dropdown-item" href="#">
                                         <i class="bi bi-emoji-smile-fill"></i> Selamat Pagi
                                         {{ Auth::user()->nama_user ?? '' }}</a>
+=======
+                                    <h5 class="mt-2">{{ Auth::user()->name ?? '' }}</h5>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-emoji-smile-fill"></i> Selamat Pagi
+                                        {{ Auth::user()->name ?? '' }}</a>
+>>>>>>> 2c27dd67e87ca2e4868bc21a143a4e6f1e72ef9e
                                 </div>
                             </div>
                         </a>
-                        <a class="dropdown-item border-top" href="#">
+                        <a class="dropdown-item border-top" href="#modalset" data-toggle="modal">
                             <i class="bi bi-gear-fill"></i> Setting</a>
                         <a class="dropdown-item border-top" href="/logout" data-toggle="modal" data-target="#modalset">
                             <i class="bi bi-power"></i> Logout</a>
@@ -70,11 +77,20 @@
                     </button>
                 </div>
                 <div class="modal-body">
+<<<<<<< HEAD
                     <p>Anda Yakin Ingin Logout dari user <span class="font-weight-bold">{{ Auth::user()->nama_user ?? '' }}</span></p>
                 </div>
                 <div class="modal-footer">
                     <a href="/logout" class="btn btn-primary">Ok</a>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
+=======
+                    <p>Anda Yakin Ingin Logout dari user {{ Auth::user()->name ?? '' }}</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="/logout" class="btn btn-primary">Ok</a>
+                    <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Cancle</button>
+>>>>>>> 2c27dd67e87ca2e4868bc21a143a4e6f1e72ef9e
                 </div>
             </div>
         </div>

@@ -50,7 +50,11 @@
                     </div>
                     <div class="form-group d-flex justify-content-between">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input" type="checkbox" id="gridCheck" onclick="checkPassword()">
+=======
+                            <input class="form-check-input" type="checkbox" id="gridCheck" onclick="myfunction()">
+>>>>>>> 2c27dd67e87ca2e4868bc21a143a4e6f1e72ef9e
                             <label class="form-check-label" for="gridCheck">
                                 Lihat Password
                             </label>
@@ -60,12 +64,21 @@
                         </div>
                     </div>
                     <script>
+<<<<<<< HEAD
                         function checkPassword() {
                             var pass = document.getElementById("password").type;
                             if (pass == "password") {
                                 document.getElementById("password").type = "text";
                             } else {
                                 document.getElementById("password").type = "password";
+=======
+                        function myfunction() {
+                            var pass = document.getElementById('password').type;
+                            if (pass == 'password') {
+                                document.getElementById('password').type = 'text';
+                            } else {
+                                document.getElementById('password').type = 'password';
+>>>>>>> 2c27dd67e87ca2e4868bc21a143a4e6f1e72ef9e
                             }
                         }
                     </script>
@@ -76,7 +89,11 @@
                         <span>Don't Have Account?</span>
                     </div>
                     <div class="form-group d-flex justify-content-center mt-3">
+<<<<<<< HEAD
                         <a href="/register" class="btn btn-primary w-50 text-light">Register</a>
+=======
+                        <a href="/register" class="btn btn-primary w-25 text-light">Register</a>
+>>>>>>> 2c27dd67e87ca2e4868bc21a143a4e6f1e72ef9e
                     </div>
                 </form>
             </div>

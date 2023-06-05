@@ -16,7 +16,11 @@
     <div class="container-fluid d-flex justify-content-center align-items-center vh-100"
         style="background-color: #C1D0B5">
         <div class="card w-25" style="background-color: #D6E8DB; box-shadow: 1px 3px rgba(0,0,0,0.5)">
+<<<<<<< HEAD
             <div class="card-header", style="background-color: #27374D">
+=======
+            <div class="card-header" style="background-color: #27374D">
+>>>>>>> 2c27dd67e87ca2e4868bc21a143a4e6f1e72ef9e
                 <div class="text-center">
                     <span class="text-primary h4">Form</span>
                     <span class="text-danger h5">Register</span>
@@ -26,9 +30,15 @@
                 <form action="/simpan" method="POST">
                     @csrf
                     <div class="form-group">
+<<<<<<< HEAD
                         <label for="nik">Nik</label>
                         <input type="number" name="nik_user" id="nik" class="form-control"
                             placeholder="Masukan NIK" required>
+=======
+                        <label for="namalengkap">Nama Lengkap</label>
+                        <input type="text" name="name" id="namalengkap" class="form-control" placeholder="Nama"
+                            required>
+>>>>>>> 2c27dd67e87ca2e4868bc21a143a4e6f1e72ef9e
                     </div>
                     <div class="form-group">
                         <label for="Nama">Username</label>
@@ -47,19 +57,32 @@
                     </div>
                     <div class="form-group">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input" type="checkbox" id="gridCheck" onclick="checkPassword()">
+=======
+                            <input class="form-check-input" type="checkbox" id="gridCheck" onclick="myfunction()">
+>>>>>>> 2c27dd67e87ca2e4868bc21a143a4e6f1e72ef9e
                             <label class="form-check-label" for="gridCheck">
                                 Lihat Password
                             </label>
                         </div>
                     </div>
                     <script>
+<<<<<<< HEAD
                         function checkPassword() {
                             var pass = document.getElementById("password").type;
                             if (pass == "password") {
                                 document.getElementById("password").type = "text";
                             } else {
                                 document.getElementById("password").type = "password";
+=======
+                        function myfunction() {
+                            var pass = document.getElementById('password').type;
+                            if(pass == 'password'){
+                                document.getElementById('password').type = 'text';
+                            }else{
+                                document.getElementById('password').type = 'password';
+>>>>>>> 2c27dd67e87ca2e4868bc21a143a4e6f1e72ef9e
                             }
                         }
                     </script>
