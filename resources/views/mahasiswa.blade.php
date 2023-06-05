@@ -38,9 +38,9 @@
             {{-- <a class="btn btn-outline-primary mb-2 float-right"href="/mahasiswa/desc">
                 <i class="bi bi-file-earmark-plus"></i> Descending
             </a> --}}
-            <table class="table table-hover">
+            <table class="table table-hover table-bordered">
                 <thead class="thead-dark">
-                    <tr>
+                    <tr class="text-center">
                         <th scope="col">No</th>
                         <th scope="col">Nim</th>
                         <th scope="col">Nama</th>

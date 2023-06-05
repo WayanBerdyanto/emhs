@@ -1,6 +1,6 @@
 <div class="nav flex-column nav-pills mt-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
     <a class="nav-link text-light font-weight-bold {{ $key == 'home' ? 'active bg-dark' : 'text-dark' }}"
-        href="/">
+        href="/home">
         <i class="bi bi-house-door-fill"></i> Home</a>
     <a class="nav-link text-light font-weight-bold {{ $key == 'profile' ? 'active bg-dark' : 'text-dark' }}"
         href="/profile">
@@ -15,4 +15,9 @@
     <a class="nav-link text-light font-weight-bold {{ $key == 'artikel' ? 'active bg-dark' : 'text-dark' }}"
         href="/artikel">
         <i class="bi bi-file-earmark-ppt-fill"></i> Artikel</a>
+
+    <a class="nav-link text-light font-weight-bold {{ $key == 'task' ? 'active bg-dark' : 'text-dark' }}"
+        href="/task">
+        
+        <i class="bi bi-file-earmark-ppt-fill"></i> Task</a>
 </div>
